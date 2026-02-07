@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
@@ -29,12 +30,17 @@ export function PageHeader({
         className
       )}
     >
-      {/* Background image with overlay */}
+      {/* Background image with overlay — using next/image for optimization */}
       {backgroundImage && (
         <>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${backgroundImage})` }}
+          <Image
+            src={backgroundImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={80}
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50" />
         </>

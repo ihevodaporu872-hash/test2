@@ -39,9 +39,14 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
     <>
       {/* Hero section with cover image */}
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${project.coverImage})` }}
+        <Image
+          src={project.coverImage}
+          alt={project.title}
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
@@ -140,6 +145,8 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                     ? "(max-width: 768px) 100vw, 100vw"
                     : "(max-width: 768px) 100vw, 50vw"
                 }
+                quality={75}
+                loading={index === 0 ? "eager" : "lazy"}
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">

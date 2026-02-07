@@ -49,11 +49,12 @@ export function Hero({
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
-          alt="Interior design showcase"
+          alt="Интерьер, спроектированный студией Interior Studio"
           fill
           priority
           className="object-cover"
           sizes="100vw"
+          quality={80}
         />
         {/* Dark gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
