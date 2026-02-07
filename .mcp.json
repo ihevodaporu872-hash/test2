@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "figma": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/claude-code-figma-mcp"]
+    "Framelink MCP for Figma": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio"]
     }
   }
 }
