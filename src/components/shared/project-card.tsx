@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
+import { trackPortfolioOpen } from "@/lib/analytics"
 import { fadeInUp, defaultTransition } from "@/lib/animations"
 import type { Project } from "@/types"
 
@@ -20,7 +21,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       transition={defaultTransition}
       className={cn("group relative", className)}
     >
-      <Link href={`/portfolio/${project.slug}`} className="block">
+      <Link href={`/portfolio/${project.slug}`} className="block" onClick={() => trackPortfolioOpen(project.slug, project.title)}>
         {/* Image container with aspect ratio */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
           <Image

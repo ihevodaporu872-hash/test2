@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { trackCtaClick } from "@/lib/analytics";
 import {
   fadeInUp,
   staggerContainerWithDelay,
@@ -87,7 +88,7 @@ export function Hero({
           transition={{ ...defaultTransition, duration: 0.8 }}
           className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button asChild size="lg" className="min-w-[200px] text-base">
+          <Button asChild size="lg" className="min-w-[200px] text-base" onClick={() => trackCtaClick("hero_primary_cta", primaryCta.label)}>
             <Link href={primaryCta.href}>{primaryCta.label}</Link>
           </Button>
           <Button
@@ -95,6 +96,7 @@ export function Hero({
             variant="outline"
             size="lg"
             className="min-w-[200px] text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
+            onClick={() => trackCtaClick("hero_secondary_cta", secondaryCta.label)}
           >
             <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
           </Button>

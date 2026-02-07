@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/page-header";
 import { B2BProductPage } from "@/components/sections/b2b-product-page";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { b2bPackages } from "../../../../../content/packages/b2b";
 
 const pkg = b2bPackages.find((p) => p.id === "parking")!;
@@ -21,6 +22,13 @@ export const metadata: Metadata = {
 export default function ParkingPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "B2B", href: "/b2b" },
+          { name: "Дизайн паркинга", href: "/b2b/parking" },
+        ]}
+      />
       <PageHeader
         title={pkg.title}
         description={pkg.subtitle}

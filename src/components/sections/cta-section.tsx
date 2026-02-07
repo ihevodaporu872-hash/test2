@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import { cn } from "@/lib/utils";
+import { trackCtaClick } from "@/lib/analytics";
 import { fadeInUp, defaultTransition } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 
@@ -75,6 +76,7 @@ export function CTASection({
                 variant === "primary" &&
                   "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               )}
+              onClick={() => trackCtaClick("cta_section", buttonLabel)}
             >
               <Link href={buttonHref}>{buttonLabel}</Link>
             </Button>

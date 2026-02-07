@@ -14,6 +14,7 @@ import { featuredProjects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
 import { b2cPackages } from "../../content/packages/b2c";
 import { faqItems } from "../../content/faq/index";
+import { trustHints as allTrustHints } from "../../content/trust-hints";
 
 export const metadata: Metadata = {
   title: "Дизайн интерьера в Москве — студия INTERIOR STUDIO",
@@ -75,6 +76,10 @@ const packagesForHomepage = b2cPackages.map((pkg) => ({
 
 const topFaqs = faqItems.slice(0, 5);
 
+const heroTrustHints = allTrustHints
+  .filter((h) => h.id === "process-stages" || h.id === "payment-staged" || h.id === "revisions-included")
+  .map((h) => h.text);
+
 export default function Home() {
   return (
     <>
@@ -87,11 +92,7 @@ export default function Home() {
           backgroundImage="/images/photo_main.jpg"
           primaryCta={{ label: "Обсудить проект", href: "/contact" }}
           secondaryCta={{ label: "Смотреть работы", href: "/portfolio" }}
-          trustHints={[
-            "5 этапов",
-            "3 контрольные точки",
-            "0 сюрпризов",
-          ]}
+          trustHints={heroTrustHints}
         />
 
         {/* 2. USP Strip */}
@@ -107,7 +108,7 @@ export default function Home() {
         {/* 4. Packages Overview */}
         <PackagesGrid
           title="Пакеты услуг"
-          description="Выберите подходящий формат работы — от легкого первого шага до полного цикла под ключ"
+          description="Выберите подходящий формат работы — от легкого первого шага до полного цикла под ключ. Поэтапная оплата — платите за результат. Стоимость концепции засчитывается в полный проект."
           packages={packagesForHomepage}
           ctaHref="/pricing"
           className="bg-muted/30"
@@ -134,7 +135,7 @@ export default function Home() {
         {/* 8. CTA Section */}
         <CTASection
           title="Готовы начать проект?"
-          description="Расскажите о вашем пространстве, и мы предложим оптимальный формат работы. Первая консультация — бесплатно."
+          description="Расскажите о вашем пространстве, и мы предложим оптимальный формат работы. Первая консультация — бесплатно. Сроки зафиксированы в договоре, работаем по всей России."
           buttonLabel="Обсудить проект"
           buttonHref="/contact"
           variant="dark"

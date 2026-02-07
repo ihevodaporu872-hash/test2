@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/section";
 import { PackagesGrid } from "@/components/sections/packages-grid";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { CTASection } from "@/components/sections/cta-section";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { b2cPackages } from "../../../../content/packages/b2c";
 import { faqItems } from "../../../../content/faq/index";
 import {
@@ -100,6 +101,12 @@ const paymentSteps = [
 export default function PricingPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Стоимость", href: "/pricing" },
+        ]}
+      />
       {/* Page Header */}
       <PageHeader
         title="Стоимость услуг"
@@ -284,7 +291,7 @@ export default function PricingPage() {
       {/* CTA */}
       <CTASection
         title="Получить точный расчёт"
-        description="Оставьте заявку — подготовим индивидуальное предложение с учётом площади и задач вашего проекта"
+        description="Оставьте заявку — подготовим индивидуальное предложение с учётом площади и задач вашего проекта. Поэтапная оплата, стоимость концепции засчитывается в полный проект."
         buttonLabel="Получить расчёт"
         buttonHref="/contact"
         variant="dark"

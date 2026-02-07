@@ -13,6 +13,7 @@ import {
 import { PageHeader } from "@/components/layout/page-header";
 import { Section } from "@/components/layout/section";
 import { CTASection } from "@/components/sections/cta-section";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -97,6 +98,12 @@ const slugMap: Record<string, string> = {
 export default function B2BPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "B2B", href: "/b2b" },
+        ]}
+      />
       {/* Page Header */}
       <PageHeader
         title="Дизайн для бизнеса"

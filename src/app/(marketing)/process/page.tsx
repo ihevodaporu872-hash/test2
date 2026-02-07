@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/section";
 import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { CTASection } from "@/components/sections/cta-section";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { faqItems } from "../../../../content/faq/index";
 import { AlertCircle, Check } from "lucide-react";
 import {
@@ -92,6 +93,12 @@ const boundaries = [
 export default function ProcessPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Процесс", href: "/process" },
+        ]}
+      />
       {/* Page Header */}
       <PageHeader
         title="Как мы работаем"
@@ -170,7 +177,7 @@ export default function ProcessPage() {
       {/* CTA */}
       <CTASection
         title="Начать проект"
-        description="Первый шаг — это разговор. Расскажите о вашем пространстве, и мы предложим оптимальный план действий."
+        description="Первый шаг — это разговор. Расскажите о вашем пространстве, и мы предложим оптимальный план действий. 2 раунда правок включены, сроки зафиксированы в договоре."
         buttonLabel="Начать проект"
         buttonHref="/contact"
         variant="dark"
