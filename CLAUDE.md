@@ -290,4 +290,22 @@ docs/
 Не останавливайся из‑за неопределённости — двигай проект вперёд.
 
 ---
-Конец Claude.md
+Примеры задач и какие skills подключать
+
+“Сверстай главную по макету Figma”
+→ 02-ui-and-brand + 03-figma-to-code + 04-shadcn-and-tailwind + 07-quality-perf-a11y
+
+“Сделай страницу /pricing с пакетами и ограничением правок”
+→ 01-architecture + 05-seo-and-content + 04-shadcn-and-tailwind + 02-ui-and-brand
+
+“Добавь форму заявки с отправкой в Telegram”
+→ 06-leads-and-integrations + 07-quality-perf-a11y (+ 08-testing-and-ci если есть CI)
+
+“Добавь кейсы и страницу /portfolio/[slug]”
+→ 01-architecture + 05-seo-and-content + 02-ui-and-brand + 07-quality-perf-a11y
+
+Практическое правило “когда MCP”
+
+Видишь слово “макет / как в Figma / сверстать точно” → сразу MCP Figma.
+
+Видишь слово “аккордеон/диалог/форма/табс/шит/карусель” → сразу MCP shadcn.
