@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, beforeAll } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import {
   Avatar,
@@ -9,6 +9,35 @@ import {
   AvatarGroup,
   AvatarGroupCount,
 } from "@/components/ui/avatar";
+
+// Radix Avatar uses window.Image with addEventListener("load", ...) to check
+// if the image src loads. In jsdom, Image.onload never fires, so the avatar
+// image status stays "idle" and the image element is never rendered.
+// We mock Image to fire load immediately.
+beforeAll(() => {
+  Object.defineProperty(window, "Image", {
+    value: class MockImage {
+      private _listeners: Record<string, Function[]> = {};
+      src = "";
+      constructor() {
+        setTimeout(() => {
+          const loadListeners = this._listeners["load"] || [];
+          loadListeners.forEach((fn) => fn());
+        }, 0);
+      }
+      addEventListener(event: string, handler: Function) {
+        if (!this._listeners[event]) this._listeners[event] = [];
+        this._listeners[event].push(handler);
+      }
+      removeEventListener(event: string, handler: Function) {
+        if (this._listeners[event]) {
+          this._listeners[event] = this._listeners[event].filter((fn) => fn !== handler);
+        }
+      }
+    },
+    writable: true,
+  });
+});
 
 describe("Avatar", () => {
   describe("rendering", () => {
@@ -94,38 +123,44 @@ describe("Avatar", () => {
 });
 
 describe("AvatarImage", () => {
-  it("renders with src attribute", () => {
+  it("renders with src attribute", async () => {
     render(
       <Avatar>
         <AvatarImage src="https://example.com/avatar.png" alt="User" data-testid="avatar-img" />
         <AvatarFallback>AB</AvatarFallback>
       </Avatar>
     );
-    const img = screen.getByTestId("avatar-img");
-    expect(img).toHaveAttribute("src", "https://example.com/avatar.png");
+    await waitFor(() => {
+      const img = screen.getByTestId("avatar-img");
+      expect(img).toHaveAttribute("src", "https://example.com/avatar.png");
+    });
   });
 
-  it("sets data-slot to 'avatar-image'", () => {
+  it("sets data-slot to 'avatar-image'", async () => {
     render(
       <Avatar>
         <AvatarImage src="https://example.com/avatar.png" alt="User" data-testid="avatar-img" />
         <AvatarFallback>AB</AvatarFallback>
       </Avatar>
     );
-    expect(screen.getByTestId("avatar-img")).toHaveAttribute("data-slot", "avatar-image");
+    await waitFor(() => {
+      expect(screen.getByTestId("avatar-img")).toHaveAttribute("data-slot", "avatar-image");
+    });
   });
 
-  it("passes alt attribute", () => {
+  it("passes alt attribute", async () => {
     render(
       <Avatar>
         <AvatarImage src="https://example.com/avatar.png" alt="Profile Picture" data-testid="avatar-img" />
         <AvatarFallback>AB</AvatarFallback>
       </Avatar>
     );
-    expect(screen.getByTestId("avatar-img")).toHaveAttribute("alt", "Profile Picture");
+    await waitFor(() => {
+      expect(screen.getByTestId("avatar-img")).toHaveAttribute("alt", "Profile Picture");
+    });
   });
 
-  it("merges custom className", () => {
+  it("merges custom className", async () => {
     render(
       <Avatar>
         <AvatarImage
@@ -137,7 +172,9 @@ describe("AvatarImage", () => {
         <AvatarFallback>AB</AvatarFallback>
       </Avatar>
     );
-    expect(screen.getByTestId("avatar-img").className).toContain("object-cover");
+    await waitFor(() => {
+      expect(screen.getByTestId("avatar-img").className).toContain("object-cover");
+    });
   });
 });
 
