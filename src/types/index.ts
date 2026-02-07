@@ -1,79 +1,80 @@
-export interface NavItem {
-  title: string
-  href: string
-  description?: string
-}
-
-export interface NavSection {
-  title: string
-  items: NavItem[]
-}
-
 export interface Project {
-  id: string
-  slug: string
-  title: string
-  category: string
-  description: string
-  image: string
-  images?: string[]
-  year?: string
-  location?: string
-  area?: string
-  client?: string
-  featured?: boolean
-}
-
-export interface Testimonial {
-  id: string
-  content: string
-  author: string
-  role: string
-  company?: string
-  avatar?: string
-  rating: number
-}
-
-export interface Service {
-  id: string
-  title: string
-  description: string
-  icon: string
-  features: string[]
-  image?: string
-  slug?: string
+  id: string;
+  title: string;
+  slug: string;
+  category: 'residential' | 'commercial' | 'hospitality' | 'office';
+  description: string;
+  coverImage: string;
+  images: string[];
+  beforeImage?: string;
+  afterImage?: string;
+  location: string;
+  area: string;
+  year: number;
+  scope: string[];
+  featured: boolean;
 }
 
 export interface TeamMember {
-  id: string
-  name: string
-  role: string
-  bio: string
-  avatar: string
-  socials?: {
-    instagram?: string
-    linkedin?: string
-    twitter?: string
-  }
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  social?: {
+    instagram?: string;
+    linkedin?: string;
+  };
+}
+
+export interface Testimonial {
+  id: string;
+  author: string;
+  role: string;
+  content: string;
+  projectId?: string;
+  avatar?: string;
+  rating: number;
+}
+
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
 }
 
 export interface BlogPost {
-  id: string
-  slug: string
-  title: string
-  excerpt: string
-  content: string
-  image: string
-  author: string
-  date: string
-  category: string
-  tags?: string[]
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  coverImage: string;
+  author: string;
+  publishedAt: string;
+  tags: string[];
+  readTime: number;
 }
 
 export interface ContactFormData {
-  name: string
-  email: string
-  phone?: string
-  service?: string
-  message: string
+  name: string;
+  email: string;
+  phone?: string;
+  projectType: string;
+  budget?: string;
+  message: string;
+}
+
+export interface SiteConfig {
+  name: string;
+  description: string;
+  url: string;
+  ogImage: string;
+  links: {
+    instagram: string;
+    pinterest: string;
+    linkedin: string;
+  };
 }

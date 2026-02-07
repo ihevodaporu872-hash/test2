@@ -1,40 +1,29 @@
-import type { NavItem, NavSection } from "@/types"
+export const mainNavigation = [
+  { label: 'Home', href: '/' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Journal', href: '/journal' },
+  { label: 'Contact', href: '/contact' },
+] as const;
 
-export const mainNavigation: NavItem[] = [
-  { title: "Home", href: "/" },
-  { title: "Portfolio", href: "/portfolio" },
-  { title: "Services", href: "/services" },
-  { title: "About", href: "/about" },
-  { title: "Blog", href: "/blog" },
-  { title: "Contact", href: "/contact" },
-]
-
-export const footerNavigation: NavSection[] = [
-  {
-    title: "Company",
-    items: [
-      { title: "About Us", href: "/about" },
-      { title: "Our Team", href: "/about#team" },
-      { title: "Careers", href: "/careers" },
-      { title: "Press", href: "/press" },
-    ],
-  },
-  {
-    title: "Services",
-    items: [
-      { title: "Residential Design", href: "/services/residential" },
-      { title: "Commercial Design", href: "/services/commercial" },
-      { title: "Consultation", href: "/services/consultation" },
-      { title: "Project Management", href: "/services/project-management" },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      { title: "Blog", href: "/blog" },
-      { title: "Portfolio", href: "/portfolio" },
-      { title: "FAQ", href: "/faq" },
-      { title: "Contact", href: "/contact" },
-    ],
-  },
-]
+export const footerNavigation = {
+  company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Our Team', href: '/about#team' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Press', href: '/press' },
+  ],
+  services: [
+    { label: 'Residential Design', href: '/services#residential' },
+    { label: 'Commercial Design', href: '/services#commercial' },
+    { label: 'Consultation', href: '/services#consultation' },
+    { label: 'Project Management', href: '/services#management' },
+  ],
+  resources: [
+    { label: 'Journal', href: '/journal' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+  ],
+} as const;
