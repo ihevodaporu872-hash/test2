@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/page-header";
+import { B2BProductPage } from "@/components/sections/b2b-product-page";
+import { b2bPackages } from "../../../../../content/packages/b2b";
+
+const pkg = b2bPackages.find((p) => p.id === "parking")!;
 
 export const metadata: Metadata = {
-  title: "Дизайн паркинга | Interior Studio",
-  description:
-    "Навигация, освещение и зонирование паркинга. Безопасность и удобство для жителей.",
+  title: `${pkg.title} | Interior Studio`,
+  description: pkg.solution,
+  openGraph: {
+    title: `${pkg.title} — ${pkg.subtitle} | Interior Studio`,
+    description: pkg.solution,
+  },
 };
 
 export default function ParkingPage() {
   return (
-    <div>
-      <h1>Дизайн паркинга</h1>
-    </div>
+    <>
+      <PageHeader
+        title={pkg.title}
+        description={pkg.subtitle}
+        backgroundImage="/images/photo_9.jpg"
+      />
+      <B2BProductPage pkg={pkg} />
+    </>
   );
 }

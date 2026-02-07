@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/page-header";
+import { B2BProductPage } from "@/components/sections/b2b-product-page";
+import { b2bPackages } from "../../../../../content/packages/b2b";
+
+const pkg = b2bPackages.find((p) => p.id === "planning-audit")!;
 
 export const metadata: Metadata = {
-  title: "Планировочный аудит | Interior Studio",
-  description:
-    "Оптимизация планировок квартир для застройщиков: анализ, варианты и рекомендации по зонированию.",
+  title: `${pkg.title} | Interior Studio`,
+  description: pkg.solution,
+  openGraph: {
+    title: `${pkg.title} — ${pkg.subtitle} | Interior Studio`,
+    description: pkg.solution,
+  },
 };
 
 export default function PlanningAuditPage() {
   return (
-    <div>
-      <h1>Планировочный аудит</h1>
-    </div>
+    <>
+      <PageHeader
+        title={pkg.title}
+        description={pkg.subtitle}
+        backgroundImage="/images/photo_10.jpg"
+      />
+      <B2BProductPage pkg={pkg} />
+    </>
   );
 }
