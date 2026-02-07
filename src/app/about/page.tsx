@@ -1,15 +1,23 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: 'About | Interior Studio',
+  title: "О нас | Interior Studio",
   description:
-    'Meet the team behind Interior Studio and learn about our design philosophy and approach.',
+    "Познакомьтесь с командой Interior Studio и узнайте о нашей философии дизайна.",
 };
 
 export default function AboutPage() {
   return (
-    <div>
-      <h1>About</h1>
-    </div>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <div>
+          <h1>О нас</h1>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

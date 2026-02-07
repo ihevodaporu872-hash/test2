@@ -1,15 +1,23 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: 'Journal | Interior Studio',
+  title: "Журнал | Interior Studio",
   description:
-    'Design insights, trend reports, and behind-the-scenes stories from our interior design studio.',
+    "Дизайн-вдохновение, тренды и истории из нашей студии.",
 };
 
 export default function JournalPage() {
   return (
-    <div>
-      <h1>Journal</h1>
-    </div>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <div>
+          <h1>Журнал</h1>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

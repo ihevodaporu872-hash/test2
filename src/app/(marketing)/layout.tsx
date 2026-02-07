@@ -1,15 +1,15 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-export default function Home() {
+export default function MarketingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
-        <div>
-          <h1>Главная</h1>
-        </div>
-      </main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
     </>
   );

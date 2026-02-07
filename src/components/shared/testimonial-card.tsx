@@ -60,7 +60,6 @@ export function TestimonialCard({
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">
               {testimonial.role}
-              {testimonial.company && `, ${testimonial.company}`}
             </p>
           </div>
         </CardContent>

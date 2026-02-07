@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: 'Article | Interior Studio',
-  description: 'Read this article from the Interior Studio journal.',
+  title: "Статья | Interior Studio",
+  description: "Читайте статью из журнала Interior Studio.",
 };
 
 interface ArticlePageProps {
@@ -13,8 +15,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
 
   return (
-    <div>
-      <h1>Article: {slug}</h1>
-    </div>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <div>
+          <h1>Статья: {slug}</h1>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -40,3 +40,32 @@ export const slideInFromBottom = {
     transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
+
+export const wordReveal = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const defaultTransition = {
+  duration: 0.6,
+  ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+};
+
+export const smoothTransition = {
+  duration: 0.5,
+  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+};
+
+export const springTransition = {
+  type: 'spring' as const,
+  stiffness: 300,
+  damping: 30,
+};
+
+export const staggerContainerWithDelay = (stagger = 0.1, delay = 0) => ({
+  hidden: {},
+  visible: { transition: { staggerChildren: stagger, delayChildren: delay } },
+});
+
+export const hoverScale = { scale: 1.02 };
+export const tapScale = { scale: 0.98 };

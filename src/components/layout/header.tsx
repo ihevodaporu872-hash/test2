@@ -80,7 +80,7 @@ export function Header() {
                   "hover:after:w-full"
                 )}
               >
-                {item.title}
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -165,7 +165,7 @@ export function Header() {
                             "border-b border-border/50"
                           )}
                         >
-                          {item.title}
+                          {item.label}
                         </Link>
                       </SheetClose>
                     </motion.div>

@@ -1,15 +1,23 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: 'Contact | Interior Studio',
+  title: "Контакты | Interior Studio",
   description:
-    'Get in touch with Interior Studio to discuss your next interior design project.',
+    "Свяжитесь с Interior Studio для обсуждения вашего проекта интерьера.",
 };
 
 export default function ContactPage() {
   return (
-    <div>
-      <h1>Contact</h1>
-    </div>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <div>
+          <h1>Контакты</h1>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

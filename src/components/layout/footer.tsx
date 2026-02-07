@@ -104,24 +104,24 @@ export function Footer() {
           </motion.div>
 
           {/* Navigation columns */}
-          {footerNavigation.map((section) => (
+          {Object.entries(footerNavigation).map(([title, items]) => (
             <motion.div
-              key={section.title}
+              key={title}
               variants={fadeInUp}
               transition={defaultTransition}
               className="lg:col-span-2"
             >
               <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground mb-4">
-                {section.title}
+                {title.charAt(0).toUpperCase() + title.slice(1)}
               </h3>
               <ul className="space-y-3">
-                {section.items.map((item) => (
+                {items.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
                     >
-                      {item.title}
+                      {item.label}
                     </Link>
                   </li>
                 ))}

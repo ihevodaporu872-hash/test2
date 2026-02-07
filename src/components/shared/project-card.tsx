@@ -24,7 +24,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         {/* Image container with aspect ratio */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
           <Image
-            src={project.image}
+            src={project.coverImage}
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
