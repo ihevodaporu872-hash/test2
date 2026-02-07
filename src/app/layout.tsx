@@ -5,22 +5,22 @@ import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-heading",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   variable: "--font-body",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "INTERIOR STUDIO | Premium Interior Design",
+  title: "INTERIOR STUDIO | Дизайн интерьера с инженерной точностью",
   description:
-    "Luxury interior design studio crafting bespoke living spaces with timeless elegance. Transform your home with our premium design services.",
+    "Студия дизайна интерьера. От планировки до последнего выключателя — проектируем пространства, по которым строители строят без вопросов.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ru" suppressHydrationWarning>
       <body
         className={`${cormorantGaramond.variable} ${dmSans.variable} antialiased`}
       >

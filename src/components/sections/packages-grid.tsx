@@ -29,6 +29,7 @@ export interface PackageItem {
   excludes?: string[];
   cta: string;
   featured?: boolean;
+  countsTowardFullProject?: boolean;
 }
 
 interface PackagesGridProps {
@@ -75,15 +76,26 @@ export function PackagesGrid({
             <Card
               className={cn(
                 "h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
-                pkg.featured && "border-primary ring-1 ring-primary/20"
+                pkg.featured &&
+                  "border-primary ring-2 ring-primary/20 relative shadow-md"
               )}
             >
               <CardHeader>
-                {pkg.featured && (
-                  <Badge variant="default" className="w-fit mb-2">
-                    Популярный
-                  </Badge>
-                )}
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {pkg.featured && (
+                    <Badge variant="default" className="w-fit">
+                      Популярный
+                    </Badge>
+                  )}
+                  {pkg.countsTowardFullProject && (
+                    <Badge
+                      variant="secondary"
+                      className="w-fit text-xs"
+                    >
+                      Засчитывается в полный проект
+                    </Badge>
+                  )}
+                </div>
                 <CardTitle className="text-lg">{pkg.title}</CardTitle>
                 <CardDescription>{pkg.subtitle}</CardDescription>
                 <div className="pt-2">
@@ -108,7 +120,7 @@ export function PackagesGrid({
                       key={i}
                       className="flex items-start gap-2 text-sm text-muted-foreground"
                     >
-                      <Check className="size-4 text-green-500 shrink-0 mt-0.5" />
+                      <Check className="size-4 text-green-600 shrink-0 mt-0.5" />
                       {item}
                     </li>
                   ))}
@@ -117,7 +129,7 @@ export function PackagesGrid({
                       key={`ex-${i}`}
                       className="flex items-start gap-2 text-sm text-muted-foreground/60"
                     >
-                      <X className="size-4 text-red-400 shrink-0 mt-0.5" />
+                      <X className="size-4 text-red-500 shrink-0 mt-0.5" />
                       {item}
                     </li>
                   ))}
@@ -125,7 +137,11 @@ export function PackagesGrid({
               </CardContent>
 
               <CardFooter>
-                <Button asChild className="w-full" variant={pkg.featured ? "default" : "outline"}>
+                <Button
+                  asChild
+                  className="w-full"
+                  variant={pkg.featured ? "default" : "outline"}
+                >
                   <Link href={ctaHref}>{pkg.cta}</Link>
                 </Button>
               </CardFooter>

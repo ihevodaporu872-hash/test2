@@ -4,6 +4,59 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * ============================================================
+ * DESIGN TOKENS — Interior Design Studio
+ * ============================================================
+ *
+ * TYPOGRAPHY
+ * ----------
+ * --font-heading : Cormorant Garamond (serif) — headings, logo, display text
+ * --font-body    : DM Sans (sans-serif) — body copy, UI elements, buttons
+ *
+ * Font scale (Tailwind defaults, used via classes):
+ *   text-xs    : 0.75rem / 1rem       — captions, legal
+ *   text-sm    : 0.875rem / 1.25rem   — secondary text, nav items
+ *   text-base  : 1rem / 1.5rem        — body copy
+ *   text-lg    : 1.125rem / 1.75rem   — lead paragraphs
+ *   text-xl    : 1.25rem / 1.75rem    — card titles, section subtitles
+ *   text-2xl   : 1.5rem / 2rem        — prices, small headings
+ *   text-3xl   : 1.875rem / 2.25rem   — section headings (mobile)
+ *   text-4xl   : 2.25rem / 2.5rem     — section headings (desktop)
+ *   text-5xl   : 3rem / 1             — hero heading (tablet)
+ *   text-7xl   : 4.5rem / 1           — hero heading (desktop)
+ *
+ * SPACING SCALE
+ * -------------
+ * Consistent spacing used throughout (Tailwind default scale):
+ *   4px   (1)   — tight gaps, icon padding
+ *   8px   (2)   — inline spacing, small gaps
+ *   12px  (3)   — button padding-y, tight card padding
+ *   16px  (4)   — standard padding, gaps between elements
+ *   20px  (5)   — card padding
+ *   24px  (6)   — section inner gap
+ *   32px  (8)   — between content blocks
+ *   48px  (12)  — section heading to content
+ *   64px  (16)  — between page sections (mobile)
+ *   80px  (20)  — section vertical padding (mobile: py-20)
+ *   128px (32)  — section vertical padding (desktop: py-32)
+ *
+ * COLOR PALETTE
+ * -------------
+ * Warm, earthy tones suitable for interior design:
+ *   --background        : warm off-white (oklch 0.958, hue ~68)
+ *   --foreground         : deep warm brown (oklch 0.263, hue ~59)
+ *   --primary            : warm terracotta/clay (oklch 0.707, hue ~46) — CTAs, links
+ *   --secondary          : soft warm gray (oklch 0.916, hue ~68) — cards, backgrounds
+ *   --muted              : soft warm gray — subtle backgrounds
+ *   --muted-foreground   : warm mid-gray (oklch 0.612, hue ~77) — secondary text
+ *   --accent             : warm sage/olive (oklch 0.762, hue ~77) — highlights, badges
+ *   --destructive        : warm red (oklch 0.577) — errors, required fields
+ *
+ * All colors use oklch for perceptual uniformity and warm hue angles (45-77).
+ * ============================================================
+ */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -124,6 +177,7 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+  /* Headings use Cormorant Garamond (serif) for elegance */
   h1,
   h2,
   h3,
@@ -131,5 +185,15 @@
   h5,
   h6 {
     @apply font-serif;
+  }
+  /* Ensure body text uses DM Sans (sans-serif) for readability */
+  p,
+  li,
+  span,
+  label,
+  input,
+  textarea,
+  button {
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   }
 }

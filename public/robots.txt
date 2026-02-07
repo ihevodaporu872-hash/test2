@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/
+
+# Host
+Host: https://interiorstudio.com
+
+# Sitemaps
+Sitemap: https://interiorstudio.com/sitemap.xml

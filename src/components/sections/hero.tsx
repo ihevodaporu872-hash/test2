@@ -13,14 +13,14 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface HeroProps {
-  title: string;
-  subtitle: string;
-  backgroundImage: string;
-  primaryCta: {
+  title?: string;
+  subtitle?: string;
+  backgroundImage?: string;
+  primaryCta?: {
     label: string;
     href: string;
   };
-  secondaryCta: {
+  secondaryCta?: {
     label: string;
     href: string;
   };
@@ -29,12 +29,12 @@ interface HeroProps {
 }
 
 export function Hero({
-  title,
-  subtitle,
-  backgroundImage,
-  primaryCta,
-  secondaryCta,
-  trustHints = [],
+  title = "Проектируем интерьеры с инженерной точностью",
+  subtitle = "От планировки до последнего выключателя — 80 листов рабочей документации, по которой строители строят без вопросов",
+  backgroundImage = "/images/photo_main.jpg",
+  primaryCta = { label: "Обсудить проект", href: "/contact" },
+  secondaryCta = { label: "Смотреть работы", href: "/portfolio" },
+  trustHints = ["5 этапов", "3 контрольные точки", "0 сюрпризов"],
   className,
 }: HeroProps) {
   return (
@@ -48,13 +48,14 @@ export function Hero({
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
-          alt=""
+          alt="Interior design showcase"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 
       {/* Content */}
@@ -67,7 +68,7 @@ export function Hero({
         <motion.h1
           variants={fadeInUp}
           transition={{ ...defaultTransition, duration: 1 }}
-          className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white"
+          className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight"
         >
           {title}
         </motion.h1>
@@ -75,7 +76,7 @@ export function Hero({
         <motion.p
           variants={fadeInUp}
           transition={{ ...defaultTransition, duration: 0.8 }}
-          className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-white/80"
+          className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-white/80"
         >
           {subtitle}
         </motion.p>
@@ -84,16 +85,16 @@ export function Hero({
         <motion.div
           variants={fadeInUp}
           transition={{ ...defaultTransition, duration: 0.8 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button asChild size="lg" className="min-w-[200px]">
+          <Button asChild size="lg" className="min-w-[200px] text-base">
             <Link href={primaryCta.href}>{primaryCta.label}</Link>
           </Button>
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="min-w-[200px] border-white/30 text-white hover:bg-white/10 hover:text-white"
+            className="min-w-[200px] text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
           >
             <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
           </Button>
@@ -104,19 +105,26 @@ export function Hero({
           <motion.div
             variants={fadeInUp}
             transition={{ ...defaultTransition, duration: 0.8 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            className="mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-x-3 gap-y-3"
           >
             {trustHints.map((hint, index) => (
-              <span
-                key={index}
-                className="text-sm text-white/60 tracking-wide"
-              >
-                {hint}
+              <span key={index} className="flex items-center">
+                <span className="text-sm md:text-base text-white/70 tracking-wide font-medium">
+                  {hint}
+                </span>
+                {index < trustHints.length - 1 && (
+                  <span className="ml-3 text-white/30 select-none" aria-hidden="true">
+                    &bull;
+                  </span>
+                )}
               </span>
             ))}
           </motion.div>
         )}
       </motion.div>
+
+      {/* Bottom fade to blend into content below */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

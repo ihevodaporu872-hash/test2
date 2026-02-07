@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Sun, Moon, Menu } from "lucide-react"
+import { Sun, Moon, Menu, Phone } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
@@ -65,7 +65,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {mainNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -87,6 +87,18 @@ export function Header() {
 
           {/* Right side actions */}
           <div className="flex items-center gap-2">
+            {/* CTA Button — desktop only */}
+            <Button
+              asChild
+              size="sm"
+              className="hidden md:inline-flex"
+            >
+              <Link href="/contact">
+                <Phone className="size-4 mr-2" />
+                Консультация
+              </Link>
+            </Button>
+
             {/* Theme toggle */}
             {mounted && (
               <Button
@@ -128,7 +140,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden text-muted-foreground hover:text-foreground"
+                  className="lg:hidden text-muted-foreground hover:text-foreground"
                   aria-label="Open menu"
                 >
                   <Menu className="size-5" />
@@ -171,6 +183,18 @@ export function Header() {
                     </motion.div>
                   ))}
                 </nav>
+
+                {/* Mobile CTA */}
+                <div className="mt-8 px-4">
+                  <SheetClose asChild>
+                    <Button asChild variant="outline" className="w-full">
+                      <Link href="/contact">
+                        <Phone className="size-4 mr-2" />
+                        Консультация
+                      </Link>
+                    </Button>
+                  </SheetClose>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
