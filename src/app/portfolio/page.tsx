@@ -32,7 +32,7 @@ export default function PortfolioPage() {
         ]}
       />
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         {/* Page Header */}
         <PageHeader
           title="Наши проекты"

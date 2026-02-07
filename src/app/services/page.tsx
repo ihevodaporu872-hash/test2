@@ -94,7 +94,7 @@ export default function ServicesPage() {
         ]}
       />
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         {/* Page Header */}
         <PageHeader
           title="Наши услуги"

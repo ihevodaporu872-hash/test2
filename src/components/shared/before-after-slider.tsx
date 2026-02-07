@@ -19,12 +19,12 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeLabel = "Before",
-  afterLabel = "After",
+  beforeLabel = "До",
+  afterLabel = "После",
   className,
 }: BeforeAfterSliderProps) {
   return (
-    <div className={cn("relative rounded-lg overflow-hidden", className)}>
+    <div className={cn("relative rounded-lg overflow-hidden", className)} role="img" aria-label={`Сравнение: ${beforeLabel} и ${afterLabel}`}>
       <ReactCompareSlider
         itemOne={
           <ReactCompareSliderImage

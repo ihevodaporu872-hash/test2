@@ -51,6 +51,8 @@ export function Footer() {
   return (
     <footer
       ref={ref}
+      role="contentinfo"
+      aria-label="Подвал сайта"
       className="bg-muted/30 border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

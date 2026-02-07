@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PageHeader } from "@/components/layout/page-header";
+import { LeadForm } from "@/components/sections/lead-form";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
@@ -27,10 +29,16 @@ export default function ContactPage() {
         ]}
       />
       <Header />
-      <main className="min-h-screen">
-        <div>
-          <h1>Контакты</h1>
-        </div>
+      <main id="main-content" className="min-h-screen">
+        <PageHeader
+          title="Контакты"
+          description="Обсудите ваш проект с дизайнером. Первая консультация бесплатно."
+        />
+        <LeadForm
+          title="Обсудить проект"
+          description="Оставьте заявку — мы свяжемся с вами в течение рабочего дня"
+          sourcePage="/contact"
+        />
       </main>
       <Footer />
     </>

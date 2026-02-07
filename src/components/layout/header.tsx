@@ -65,7 +65,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav aria-label="Основная навигация" className="hidden lg:flex items-center gap-1">
             {mainNavigation.map((item) => (
               <Link
                 key={item.href}
@@ -106,7 +106,7 @@ export function Header() {
                 size="icon"
                 onClick={toggleTheme}
                 className="text-muted-foreground hover:text-foreground"
-                aria-label="Toggle theme"
+                aria-label={theme === "dark" ? "Включить светлую тему" : "Включить тёмную тему"}
               >
                 <AnimatePresence mode="wait">
                   {theme === "dark" ? (
@@ -141,7 +141,7 @@ export function Header() {
                   variant="ghost"
                   size="icon"
                   className="lg:hidden text-muted-foreground hover:text-foreground"
-                  aria-label="Open menu"
+                  aria-label="Открыть меню"
                 >
                   <Menu className="size-5" />
                 </Button>
@@ -155,7 +155,7 @@ export function Header() {
                     Interior Studio
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col gap-1 mt-8 px-4">
+                <nav aria-label="Мобильная навигация" className="flex flex-col gap-1 mt-8 px-4">
                   {mainNavigation.map((item, index) => (
                     <motion.div
                       key={item.href}

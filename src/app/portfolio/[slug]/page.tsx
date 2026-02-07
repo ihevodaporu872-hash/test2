@@ -72,7 +72,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         ]}
       />
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         <ProjectDetailContent project={project} />
 
         {/* CTA */}

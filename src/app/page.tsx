@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         {/* 1. Hero */}
         <Hero
           title="Проектируем интерьеры с инженерной точностью"

@@ -41,7 +41,7 @@ export function FAQAccordion({
         )}
       </div>
 
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto" role="region" aria-label={title}>
         <Accordion type="single" collapsible className="w-full">
           {items.map((item) => (
             <AccordionItem key={item.id} value={item.id}>

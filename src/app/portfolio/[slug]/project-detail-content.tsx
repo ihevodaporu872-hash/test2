@@ -131,9 +131,19 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
                 index === 0 && "md:col-span-2 aspect-video",
                 index > 0 && "aspect-[4/3]"
               )}
+              role="button"
+              tabIndex={0}
+              aria-label={`Открыть фото ${index + 1} из ${project.images.length}`}
               onClick={() => {
                 setLightboxIndex(index);
                 setLightboxOpen(true);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setLightboxIndex(index);
+                  setLightboxOpen(true);
+                }
               }}
             >
               <Image
@@ -162,6 +172,11 @@ export function ProjectDetailContent({ project }: ProjectDetailContentProps) {
           close={() => setLightboxOpen(false)}
           index={lightboxIndex}
           slides={lightboxSlides}
+          labels={{
+            Previous: "Предыдущее фото",
+            Next: "Следующее фото",
+            Close: "Закрыть галерею",
+          }}
         />
       </Section>
 

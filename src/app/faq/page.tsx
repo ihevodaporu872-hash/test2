@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PageHeader } from "@/components/layout/page-header";
+import { FAQAccordion } from "@/components/sections/faq-accordion";
+import { CTASection } from "@/components/sections/cta-section";
 import { FAQJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { faqItems } from "../../../content/faq/index";
 
@@ -29,10 +32,22 @@ export default function FaqPage() {
         ]}
       />
       <Header />
-      <main className="min-h-screen">
-        <div>
-          <h1>FAQ</h1>
-        </div>
+      <main id="main-content" className="min-h-screen">
+        <PageHeader
+          title="Частые вопросы"
+          description="Ответы на популярные вопросы о дизайне интерьера, ценах, сроках и процессе работы"
+        />
+        <FAQAccordion
+          title="Все вопросы"
+          items={faqItems}
+        />
+        <CTASection
+          title="Не нашли ответ?"
+          description="Свяжитесь с нами — ответим на любой вопрос о дизайне интерьера"
+          buttonLabel="Задать вопрос"
+          buttonHref="/contact"
+          variant="dark"
+        />
       </main>
       <Footer />
     </>

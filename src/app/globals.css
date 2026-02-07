@@ -176,6 +176,8 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   /* Headings use Cormorant Garamond (serif) for elegance */
   h1,
@@ -185,6 +187,7 @@
   h5,
   h6 {
     @apply font-serif;
+    text-wrap: balance;
   }
   /* Ensure body text uses DM Sans (sans-serif) for readability */
   p,
@@ -195,5 +198,31 @@
   textarea,
   button {
     font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  }
+  /* Paragraph text wrapping for readability */
+  p {
+    text-wrap: pretty;
+  }
+  /* Focus visible styles for keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

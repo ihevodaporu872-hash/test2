@@ -166,7 +166,7 @@ export function LeadForm({
 
         {/* Ошибка от сервера */}
         {formState === "error" && serverMessage && (
-          <div className="mb-6 flex items-start gap-3 rounded-lg border border-destructive/50 bg-destructive/5 px-4 py-3 text-sm text-destructive">
+          <div role="alert" className="mb-6 flex items-start gap-3 rounded-lg border border-destructive/50 bg-destructive/5 px-4 py-3 text-sm text-destructive">
             <AlertCircle className="size-5 shrink-0 mt-0.5" />
             <div>
               <p className="font-medium">{serverMessage}</p>
@@ -210,11 +210,12 @@ export function LeadForm({
                 autoComplete="name"
                 disabled={formState === "submitting"}
                 aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? "lead-name-error" : undefined}
                 className={cn(errors.name && "border-destructive")}
                 {...register("name")}
               />
               {errors.name && (
-                <p className="text-xs text-destructive">{errors.name.message}</p>
+                <p id="lead-name-error" role="alert" className="text-xs text-destructive">{errors.name.message}</p>
               )}
             </div>
 
@@ -229,11 +230,12 @@ export function LeadForm({
                 autoComplete="tel"
                 disabled={formState === "submitting"}
                 aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "lead-phone-error" : undefined}
                 className={cn(errors.phone && "border-destructive")}
                 {...register("phone")}
               />
               {errors.phone && (
-                <p className="text-xs text-destructive">{errors.phone.message}</p>
+                <p id="lead-phone-error" role="alert" className="text-xs text-destructive">{errors.phone.message}</p>
               )}
             </div>
           </div>
@@ -248,11 +250,12 @@ export function LeadForm({
               autoComplete="email"
               disabled={formState === "submitting"}
               aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? "lead-email-error" : undefined}
               className={cn(errors.email && "border-destructive")}
               {...register("email")}
             />
             {errors.email && (
-              <p className="text-xs text-destructive">{errors.email.message}</p>
+              <p id="lead-email-error" role="alert" className="text-xs text-destructive">{errors.email.message}</p>
             )}
           </div>
 
@@ -323,11 +326,12 @@ export function LeadForm({
                 rows={4}
                 disabled={formState === "submitting"}
                 aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? "lead-message-error" : undefined}
                 className={cn(errors.message && "border-destructive")}
                 {...register("message")}
               />
               {errors.message && (
-                <p className="text-xs text-destructive">
+                <p id="lead-message-error" role="alert" className="text-xs text-destructive">
                   {errors.message.message}
                 </p>
               )}

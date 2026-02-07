@@ -29,13 +29,14 @@ export function TestimonialCard({
       <Card className={cn("h-full", className)}>
         <CardHeader className="pb-0">
           {/* Quote icon */}
-          <Quote className="size-8 text-muted-foreground/30" />
+          <Quote aria-hidden="true" className="size-8 text-muted-foreground/30" />
 
           {/* Star rating */}
-          <div className="flex items-center gap-1 mt-3">
+          <div className="flex items-center gap-1 mt-3" role="img" aria-label={`Оценка: ${testimonial.rating} из 5`}>
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
                 key={i}
+                aria-hidden="true"
                 className={cn(
                   "size-4",
                   i < testimonial.rating
