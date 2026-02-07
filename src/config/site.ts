@@ -2,8 +2,8 @@ import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
   name: 'INTERIOR STUDIO',
-  description: 'Premium interior design studio creating bespoke living spaces',
-  url: 'https://interiorstudio.com',
+  description: 'Студия дизайна интерьера в Москве. Проектируем пространства с инженерной точностью — от планировки до последнего выключателя.',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://interiorstudio.com',
   ogImage: '/og-image.jpg',
   links: {
     instagram: 'https://instagram.com/interiorstudio',

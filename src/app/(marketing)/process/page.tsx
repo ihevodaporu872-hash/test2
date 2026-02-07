@@ -14,9 +14,18 @@ import {
 } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Как мы работаем | Interior Studio",
+  title: "Процесс работы — 5 этапов от замера до готового интерьера",
   description:
-    "Прозрачный процесс работы: от первой встречи до готового интерьера. Этапы, сроки и что вы получаете на каждом шаге.",
+    "Прозрачный процесс дизайна интерьера: бриф и замеры, концепция, дизайн-проект, согласование, авторский надзор. Фиксированные сроки в договоре.",
+  alternates: {
+    canonical: "/process",
+  },
+  openGraph: {
+    title: "Как мы работаем | INTERIOR STUDIO",
+    description:
+      "5 этапов с контрольными точками. Вы всегда знаете, что происходит и что будет дальше.",
+    images: ["/images/photo_6.jpg"],
+  },
 };
 
 const processFaq = faqItems.filter((item) => item.category === "process");

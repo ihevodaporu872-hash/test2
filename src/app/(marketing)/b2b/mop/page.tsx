@@ -6,11 +6,15 @@ import { b2bPackages } from "../../../../../content/packages/b2b";
 const pkg = b2bPackages.find((p) => p.id === "mop")!;
 
 export const metadata: Metadata = {
-  title: `${pkg.title} | Interior Studio`,
-  description: pkg.solution,
+  title: `${pkg.title} — дизайн входных групп и лобби`,
+  description: `${pkg.subtitle}. ${pkg.solution} Пилотный проект для одного этажа доступен от 40 000 руб.`,
+  alternates: {
+    canonical: "/b2b/mop",
+  },
   openGraph: {
-    title: `${pkg.title} — ${pkg.subtitle} | Interior Studio`,
+    title: `${pkg.title} | INTERIOR STUDIO`,
     description: pkg.solution,
+    images: ["/images/photo_7.jpg"],
   },
 };
 

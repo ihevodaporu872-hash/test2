@@ -4,16 +4,20 @@ import { Footer } from "@/components/layout/footer";
 import { PageHeader } from "@/components/layout/page-header";
 import { ProjectsGallery } from "@/components/sections/projects-gallery";
 import { CTASection } from "@/components/sections/cta-section";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Наши проекты | Interior Studio",
+  title: "Портфолио — реализованные проекты дизайна интерьера",
   description:
-    "Портфолио дизайн-студии: жилые, коммерческие и общественные пространства. Смотрите наши лучшие реализованные проекты дизайна интерьера.",
+    "Портфолио дизайн-студии INTERIOR STUDIO: квартиры, загородные дома, коммерческие и общественные пространства. Каждый проект — от 80 листов рабочей документации до авторского надзора.",
+  alternates: {
+    canonical: "/portfolio",
+  },
   openGraph: {
-    title: "Портфолио | Interior Studio",
+    title: "Портфолио | INTERIOR STUDIO",
     description:
-      "Смотрите наши лучшие реализованные проекты дизайна интерьера.",
+      "Жилые, коммерческие и общественные пространства. Смотрите наши лучшие реализованные проекты.",
     images: ["/images/photo_5.jpg"],
   },
 };
@@ -21,6 +25,12 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Портфолио", href: "/portfolio" },
+        ]}
+      />
       <Header />
       <main className="min-h-screen">
         {/* Page Header */}

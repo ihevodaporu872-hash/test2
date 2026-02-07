@@ -7,6 +7,7 @@ import { Section } from "@/components/layout/section";
 import { ServiceCard } from "@/components/shared/service-card";
 import { FAQAccordion } from "@/components/sections/faq-accordion";
 import { CTASection } from "@/components/sections/cta-section";
+import { ServiceJsonLd, BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { services } from "@/data/services";
 import { faqItems } from "../../../content/faq/index";
 import { Button } from "@/components/ui/button";
@@ -21,9 +22,18 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Наши услуги | Interior Studio",
+  title: "Услуги дизайна интерьера — от концепции до авторского надзора",
   description:
-    "Полный спектр услуг дизайна интерьера: от концепции и планировки до полного цикла под ключ с авторским надзором.",
+    "Полный спектр услуг дизайна интерьера в Москве: планировочные решения, 3D-визуализации, рабочие чертежи, авторский надзор. Проектируем для жизни, а не для инстаграма.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Услуги дизайна интерьера | INTERIOR STUDIO",
+    description:
+      "От концепции и планировки до полного цикла под ключ с авторским надзором.",
+    images: ["/images/photo_2.jpg"],
+  },
 };
 
 const servicesFaq = faqItems.filter(
@@ -69,6 +79,20 @@ const whatsIncluded = [
 export default function ServicesPage() {
   return (
     <>
+      <ServiceJsonLd
+        services={[
+          { name: "Дизайн жилых интерьеров", description: "Полный дизайн-проект квартиры или дома: планировка, 3D-визуализация, рабочие чертежи, спецификации материалов и мебели." },
+          { name: "Дизайн коммерческих пространств", description: "Интерьеры для ресторанов, магазинов, отелей и офисов с учётом бренда и бизнес-задач." },
+          { name: "Дизайн-консультация", description: "Экспертная оценка, стилевое направление, рекомендации по планировке и материалам." },
+          { name: "Авторский надзор", description: "Контроль реализации проекта на строительной площадке. Совпадение с визуализацией 95%+." },
+        ]}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Услуги", href: "/services" },
+        ]}
+      />
       <Header />
       <main className="min-h-screen">
         {/* Page Header */}

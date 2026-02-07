@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CTASection } from "@/components/sections/cta-section";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { projects, getProjectBySlug } from "@/data/projects";
 import { ProjectDetailContent } from "./project-detail-content";
 
@@ -24,17 +25,31 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: "Проект не найден | Interior Studio",
+      title: "Проект не найден",
     };
   }
 
+  const shortDescription = project.description.length > 160
+    ? project.description.substring(0, 157) + "..."
+    : project.description;
+
   return {
-    title: `${project.title} | Interior Studio`,
-    description: project.description,
+    title: `${project.title} — ${project.area}, ${project.location}`,
+    description: shortDescription,
+    alternates: {
+      canonical: `/portfolio/${slug}`,
+    },
     openGraph: {
-      title: `${project.title} | Interior Studio`,
-      description: project.description,
-      images: [project.coverImage],
+      title: `${project.title} | INTERIOR STUDIO`,
+      description: shortDescription,
+      images: [
+        {
+          url: project.coverImage,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
     },
   };
 }
@@ -49,6 +64,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Портфолио", href: "/portfolio" },
+          { name: project.title, href: `/portfolio/${slug}` },
+        ]}
+      />
       <Header />
       <main className="min-h-screen">
         <ProjectDetailContent project={project} />

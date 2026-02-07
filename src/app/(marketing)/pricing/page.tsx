@@ -22,9 +22,18 @@ import {
 } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Стоимость услуг | Interior Studio",
+  title: "Стоимость дизайна интерьера — пакеты от 45 000 руб.",
   description:
-    "Прозрачное ценообразование: пакеты дизайн-услуг от концепции и планировки до полного цикла под ключ.",
+    "Прозрачные цены на дизайн интерьера: концепция от 45 000 руб., полный проект от 120 000 руб., полный цикл от 250 000 руб. Поэтапная оплата, фиксированные сроки.",
+  alternates: {
+    canonical: "/pricing",
+  },
+  openGraph: {
+    title: "Стоимость услуг | INTERIOR STUDIO",
+    description:
+      "Пакеты дизайн-услуг с прозрачным ценообразованием. От концепции до полного цикла под ключ.",
+    images: ["/images/photo_4.jpg"],
+  },
 };
 
 const pricingFaq = faqItems.filter((item) => item.category === "pricing");

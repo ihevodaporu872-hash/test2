@@ -16,9 +16,18 @@ import { b2cPackages } from "../../content/packages/b2c";
 import { faqItems } from "../../content/faq/index";
 
 export const metadata: Metadata = {
-  title: "Interior Studio | Дизайн интерьера с инженерной точностью",
+  title: "Дизайн интерьера в Москве — студия INTERIOR STUDIO",
   description:
-    "От планировки до последнего выключателя — полный комплект рабочей документации, по которой строители строят без вопросов.",
+    "Студия дизайна интерьера в Москве. От планировки до последнего выключателя — полный комплект рабочей документации (80-150 листов), по которой строители строят без вопросов.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Дизайн интерьера в Москве — студия INTERIOR STUDIO",
+    description:
+      "Проектируем интерьеры с инженерной точностью. 5 этапов, 3 контрольные точки, 0 сюрпризов.",
+    images: ["/images/photo_main.jpg"],
+  },
 };
 
 const uspItems = [

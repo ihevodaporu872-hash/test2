@@ -6,11 +6,15 @@ import { b2bPackages } from "../../../../../content/packages/b2b";
 const pkg = b2bPackages.find((p) => p.id === "planning-audit")!;
 
 export const metadata: Metadata = {
-  title: `${pkg.title} | Interior Studio`,
-  description: pkg.solution,
+  title: `${pkg.title} — оптимизация типовых планировок`,
+  description: `${pkg.subtitle}. ${pkg.solution} Пилотный аудит одного типового этажа от 25 000 руб.`,
+  alternates: {
+    canonical: "/b2b/planning-audit",
+  },
   openGraph: {
-    title: `${pkg.title} — ${pkg.subtitle} | Interior Studio`,
+    title: `${pkg.title} | INTERIOR STUDIO`,
     description: pkg.solution,
+    images: ["/images/photo_10.jpg"],
   },
 };
 
