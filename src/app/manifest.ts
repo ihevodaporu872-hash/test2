@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'INTERIOR STUDIO',
     short_name: 'Interior',
-    description: 'Premium interior design studio creating bespoke living spaces',
+    description: 'Студия дизайна интерьера в Москве. Проектируем пространства с инженерной точностью.',
     start_url: '/',
     display: 'standalone',
     background_color: '#F5F0EB',

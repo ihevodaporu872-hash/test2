@@ -246,7 +246,7 @@ export function LeadForm({
             <Input
               id="lead-email"
               type="email"
-              placeholder="your@email.com"
+              placeholder="name@example.com"
               autoComplete="email"
               disabled={formState === "submitting"}
               aria-invalid={!!errors.email}
